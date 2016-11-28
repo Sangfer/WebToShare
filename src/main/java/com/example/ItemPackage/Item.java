@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+
+
 /**
  *
  * @author Alex
@@ -20,10 +22,26 @@ public class Item {
     @Id
     @NotNull
     private int id;
+
+
     private String description;
     private String name;
     private String icon;
+    private List<Stat> bonusStats;
+    private int itemClass; //Arrow, sword etc;
+    //"itemSubClass":5,
+    private int dammageMin;
+    private int dammageMax;
+    private int exactMin;
+    private int exactMax;
+    private int weaponSpeed;
+    private int dps;
+    private int baseArmor;
+    private boolean hasSockets;
 
+    public Item() {
+    }
+    
     public int getId() {
         return id;
     }
@@ -152,19 +170,7 @@ public class Item {
         this.baseArmor = baseArmor;
         this.hasSockets = hasSockets;
     }
-    private List<Stat> bonusStats;
 
-    private int itemClass; //Arrow, sword etc;
-    //"itemSubClass":5,
- 
-    private int dammageMin;
-    private int dammageMax;
-    private int exactMin;
-    private int exactMax;
-    private int weaponSpeed;
-    private int dps;
-    private int baseArmor;
-    private boolean hasSockets;
     
 }
 
