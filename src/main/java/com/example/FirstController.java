@@ -6,6 +6,7 @@
 package com.example;
 
 
+import com.example.ItemPackage.Item;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FirstController {
     
    @Inject VegetableRepository veges;
+   @Inject ItemRepository items;
   
     
     @RequestMapping("/")
@@ -31,17 +33,25 @@ public class FirstController {
         return "index";
     }
     
-   @RequestMapping("/add-vegetable")
-    public String addVegetable(@Valid Vegetable v){
-        veges.save(v);
+    
+    @RequestMapping("/add-item")
+    public String addItem(@Valid Item it){
+        items.save(it);
         return "redirect:/";
     }
     
-        @RequestMapping("/suppr-vegetable")
+       @RequestMapping("/add-vegetable")
+    public String addItem(@Valid Vegetable veges){
+        this.veges.save(veges);
+        return "redirect:/";
+    }
+    
+    
+        @RequestMapping("/suppr-item")
     public String deleteVegetable(
-            @RequestParam("id") long identifiantVegetable
+            @RequestParam("id") Long identifiantItem
     ) {
-        veges.delete(identifiantVegetable);
+        items.delete(identifiantItem);
         return "redirect:/";
     }
     
