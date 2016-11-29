@@ -9,6 +9,8 @@ package com.example;
 import com.example.security.user.User;
 import com.example.security.user.UserRepository;
 import com.example.security.user.UserService;
+
+import com.example.ItemPackage.Item;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -34,7 +36,7 @@ public class FirstController {
     UserService service = new UserService();
     
     @Inject
-    UserRepository userRepo;
+    UserRepository userRepo;  
     
     @RequestMapping("/")
     public String MaClasseController(Model m, Authentication auth){
@@ -75,37 +77,4 @@ public class FirstController {
         return "redirect:/";
     }
         
-    @RequestMapping("/suppr-vegetable")
-    public String deleteVegetable(
-            @RequestParam("id") long identifiantVegetable
-    ) {
-       
-        return "redirect:/";
-    }
-    
-    @RequestMapping("/vegetable/{idVege}")
-    public String detailsVegetable(
-    Model m, @PathVariable long idVege){
-        
-       
-        return "details";
-    }
-    
-    
-        @RequestMapping("/TEST")
-    public String genererDesDonnees() {
-
-    List<Vegetable> garden = new ArrayList<>();
-        
-    garden.add(new Vegetable("poireau", "vert", 2));
-    garden.add(new Vegetable("épinard", "vert", 3));
-    garden.add(new Vegetable("carotte", "orange", 1));
-    garden.add(new Vegetable("tomate", "rouge", 2));
-
-    for (Vegetable v : garden)
-    {
-    }
-    
-        return "redirect:/";
-    }
 }
