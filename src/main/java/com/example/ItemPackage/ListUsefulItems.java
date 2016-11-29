@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ListUsefulItems {
     
-   private static List<String> usefulItemId = new ArrayList<String>(Arrays.asList(
+   private static final List<String> listUsefulItemId = new ArrayList<String>(Arrays.asList(
                         "138211","138212","138214","138215","138216","138217","138218",
                         "138219","138220","138221","138222","138224","138225","139187",
                         "139188","139189","139190","139191","139192","139193","139194",
@@ -29,5 +29,9 @@ public class ListUsefulItems {
                         "139325","139326","139327","139328","139329","139330","139332",
                         "139333","139334","139335","139336","140993","140996","141694",
                         "141695","141696"));
+   
+   public static List<String> getList(){
+       return listUsefulItemId;
+   }
    
 }

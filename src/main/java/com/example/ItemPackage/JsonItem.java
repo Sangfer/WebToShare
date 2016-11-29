@@ -18,13 +18,15 @@ import org.json.JSONObject;
 public class JsonItem {
     
     private JSONObject jsonItem;
-    private Item myItem;
+    private List<Item> listItems= new ArrayList<Item>();
     
     public JsonItem(){
     }
     
+    public List<Item> getItemList(){
+        return this.listItems;
+    }
     
-
     public JSONObject getJsonItem() {
         return jsonItem;
     }
@@ -45,13 +47,31 @@ public class JsonItem {
         this.setJsonItem(new JSONObject(stringItem));
     }
     
-    public void createItem(){
+    public void createItem(int item) throws Exception{
+        this.getItem(item);
         Item myItem= new Item(  getId(), getDescription(), getName(), getIcon(), 
                                 getBonusStats(), getItemClass(), getDammageMin(),
                                 getDammageMax(),getExactMin(), getExactMax(), 
                                 getWeaponSpeed(), getDps(), getBaseArmor(),
-                                isHasSockets());    
+                                isHasSockets());   
+        listItems.add(myItem);
     }
+    
+    public void CreateItems(){
+    List<String> itemsToCreate= ListUsefulItems.getList();
+    for(String s: itemsToCreate){
+       try{
+           createItem(Integer.valueOf(s));
+       }
+       catch (Exception E){
+           System.out.println("com.example.ItemPackage.JsonItem.CreateItems(), impossible to create");
+       }
+       }
+    }
+    
+    
+    
+    
     
     public int getId() {
         return jsonItem.getInt("id");
