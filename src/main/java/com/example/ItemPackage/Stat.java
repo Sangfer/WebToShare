@@ -12,4 +12,15 @@ package com.example.ItemPackage;
 public class Stat{
         int statNumber;
         int amount;
+
+
+    public Stat(){
+        
+    }
+
+    public Stat(int statNumber, int amount){
+        this.statNumber=statNumber;
+        this.amount=amount;
+    }
+    
     }
