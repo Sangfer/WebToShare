@@ -6,10 +6,15 @@
 package com.example;
 
 
+import com.example.security.user.User;
+import com.example.security.user.UserRepository;
+import com.example.security.user.UserService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,31 +22,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
- * @author alexi
+ * @author Clement
  */
 
 @Controller
 public class FirstController {
     
-   @Inject VegetableRepository veges;
-  
+    private Utilisateur user=null;
+    
+    @Inject
+    UserService service = new UserService();
+    
+    @Inject
+    UserRepository userRepo;
     
     @RequestMapping("/")
-    public String MaClasseController(Model m){
+    public String MaClasseController(Model m, Authentication auth){
+        if(auth!=null)
+            m.addAttribute("user", auth.getName());
+        else
+            m.addAttribute("user", null);
         return "index";
     }
     
-   @RequestMapping("/add-vegetable")
-    public String addVegetable(@Valid Vegetable v){
-        veges.save(v);
+    @RequestMapping("/connexion")
+    public String connexion(Model m, Authentication auth)
+    {
+         m.addAttribute("user", auth.isAuthenticated());
+         m.addAttribute("u", new User());
+         return "connexion";
+    }
+    
+    @RequestMapping("/inscription")
+    public String inscription(Model m)
+    {
+        m.addAttribute("u", new Utilisateur());
+        return "inscription";
+    }
+    
+   @RequestMapping("/check")
+    public String checkUser(@Valid Utilisateur u){
+        
         return "redirect:/";
     }
     
-        @RequestMapping("/suppr-vegetable")
+    @RequestMapping("/persiUtilisateur")
+    public String persoUtilisateur(@Valid Utilisateur u)
+    {
+        System.out.println(""+u.getMotDePasse());
+        User uti = new User(u.getLogin());
+        service.saveUserComputingDerivedPassword(uti, u.getMotDePasse());
+        return "redirect:/";
+    }
+        
+    @RequestMapping("/suppr-vegetable")
     public String deleteVegetable(
             @RequestParam("id") long identifiantVegetable
     ) {
-        veges.delete(identifiantVegetable);
+       
         return "redirect:/";
     }
     
@@ -49,8 +87,7 @@ public class FirstController {
     public String detailsVegetable(
     Model m, @PathVariable long idVege){
         
-       Vegetable v= veges.findOne(idVege);
-        m.addAttribute("veges", v);
+       
         return "details";
     }
     
@@ -67,7 +104,6 @@ public class FirstController {
 
     for (Vegetable v : garden)
     {
-        veges.save(v);
     }
     
         return "redirect:/";

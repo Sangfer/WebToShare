@@ -40,8 +40,25 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Bienvenu sur WoW builder</h1>
-                        <p>Bonjour, avant de pouvoir accéder au builder. Merci de bien vouloir vous connectez ou vous inscrire</p>
+                        <h1>Connexion </h1>
+            <form method="POST" th:action="@{/persiUtilisateur}" th:object="${u}">
+             <table>
+                    <tr>
+                        <td>Login:</td>
+                        <td><input type="text" th:field="*{login}" /></td>
+                        <td th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Name Error</td>
+                    </tr>
+                    <tr>
+                        <td>Mot de passe:</td>
+                        <td><input type="password" th:field="*{motDePasse}" /></td>
+                        <td th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}">Price Error</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Inscription</button></td>
+                   </tr>
+             </table>
+            </form>
+         
                     </div>
                 </div>
             </div>
