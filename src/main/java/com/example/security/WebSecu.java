@@ -24,7 +24,7 @@ public class WebSecu extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/public/**", "/css/**","/fronts/**","/js/**","/lib/**","/inscription","/persiUtilisateur").permitAll()
+                .antMatchers("/", "/public/**", "/css/**","/fronts/**","/js/**","/lib/**","/inscription","/saveUser").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 ;
         http
