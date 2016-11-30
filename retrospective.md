@@ -1,6 +1,6 @@
-àObjectif:
+Objectif:
 -Un utilisateur peut s'inscrire et se connecter
--Permettre a l'utilisateur de créer ces builds
+-Permettre à l'utilisateur de créer ces builds
     -visualiser des objets
     -sélectionner des objets
 -Enregistrer des builds
