@@ -5,6 +5,9 @@
  */
 package com.example.ItemPackage;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 
 
 /**
@@ -12,8 +15,11 @@ package com.example.ItemPackage;
  * @author Alex
  */
 
+
+@Entity
 public class Stat{
-    
+        
+        @Id
         int statNumber;
         int amount;
 

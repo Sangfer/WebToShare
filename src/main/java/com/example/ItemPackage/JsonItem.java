@@ -32,7 +32,7 @@ public class JsonItem {
         return jsonItem;
     }
 
-    public JSONObject getJsonItem(int item) throws Exception{
+    public JSONObject getJsonItem(long item) throws Exception{
         this.getItem(item);
         return getJsonItem();  
     }
@@ -42,13 +42,13 @@ public class JsonItem {
         this.jsonItem = jsonItem;
     }
         
-    public void getItem(int item) throws Exception {
+    public void getItem(long item) throws Exception {
         HttpURLConnection http = new HttpURLConnection();
         String stringItem= http.getItemByNumber(item);
         this.setJsonItem(new JSONObject(stringItem));
     }
     
-    public void createItem(int item) throws Exception{
+    public void createItem(long item) throws Exception{
         this.getItem(item);
         /*Item myItem= new Item(  getId(), getDescription(), getName(), getIcon(), 
                                 getBonusStats(), getItemClass(), getDammageMin(),
@@ -99,8 +99,8 @@ public class JsonItem {
     
     
     
-    public int getId() {
-        return jsonItem.getInt("id");
+    public long getId() {
+        return jsonItem.getLong("id");
     }
      
  

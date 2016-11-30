@@ -6,6 +6,12 @@
 package com.example.ItemPackage;
 
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 
 
 
@@ -13,11 +19,17 @@ import java.util.List;
  *
  * @author Alex
  */
-
+@Entity
 public class Item {
-
-    private int id;
+    
+    @Column(name="ITEM_ID")
+    @Id
+    private long id;
     private String name;
+    
+    
+    @OneToMany
+    @JoinColumn (name="ITEM_ID")
     private List<Stat> bonusStats;
     private int itemClass; //Arrow, sword etc;
     
@@ -26,11 +38,11 @@ public class Item {
     }
     
     
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,7 +78,7 @@ public class Item {
         this.itemClass = itemClass;
     }
         
-    public Item(int id, String name, int itemClass, List<Stat> bonusStats) {
+    public Item(long id, String name, int itemClass, List<Stat> bonusStats) {
         this.id = id;
         this.name = name;
         this.itemClass = itemClass; 
