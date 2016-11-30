@@ -17,7 +17,7 @@ public class HttpURLConnection {
     private final String apiKey="znvu7s744nxkmbjx66rcywvjqrk8h7f8";
     private final String USER_AGENT = "Mozilla/5.0";
 
-     public String getItemByNumber(int itemNumber) throws Exception {
+     public String getItemByNumber(long itemNumber) throws Exception {
 
                 //The Url of the api for getting items
 		String url = "https://us.api.battle.net/wow/item/"+itemNumber+"?locale=en_US&apikey="+apiKey;
