@@ -81,4 +81,19 @@ public class FirstController {
         return "redirect:/";
     }
     
+    @RequestMapping("/build")
+    public String build(Model m, Authentication auth)
+    {
+        if(auth!=null)
+            if(auth.isAuthenticated())
+            {
+                //System.out.println(((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername());
+                m.addAttribute("user", ((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername());
+            }
+            else
+                m.addAttribute("user", null);
+        else
+            m.addAttribute("user", null);
+        return "react-part";
+    }
 }
