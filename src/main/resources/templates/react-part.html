@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html>
+    <head>
+        <title>Compteur avec React</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="lib/react.js"></script>
+        <script src="lib/react-dom.js"></script>
+        <script src="lib/babel-browser.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Custom CSS -->
+        <link href="css/simple-sidebar.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="wrapper">
+
+        <!-- Sidebar -->
+        
+        <nav lang="en" th:replace="fragments/sideBar :: sideBar"/>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="container"></div>
+                        <script src="reactCode.jsx" type="text/babel" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+         
+
+        
+    </body>
+</html>
