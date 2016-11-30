@@ -1,8 +1,8 @@
-Objectif:
+àObjectif:
 -Un utilisateur peut s'inscrire et se connecter
 -Permettre a l'utilisateur de créer ces builds
     -visualiser des objets
-    -selectionner des objets
+    -sélectionner des objets
 -Enregistrer des builds
 
 Réussite:
@@ -11,8 +11,8 @@ Réussite:
     -visualiser des objets
 
 Difficultées:
--le JSON a été un véritable obstacle, avec l'utilisation de l'API de WOW et l'importation des donnée dans notre application
--le react a été aussi un autre problème car appréhender beaucoups trop tard sans avoir le temps de vraiment l'apprendre
+-le JSON a été un véritable obstacle, avec l'utilisation de l'API de WOW et l'importation des données dans notre application
+-le React a été aussi un autre problème car appréhender beaucoup trop tard sans avoir le temps de vraiment l'apprendre
 
 Lecons retenu:
 -le JSON et SPRING
