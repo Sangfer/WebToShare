@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import lombok.Data;
 
 
 
@@ -19,23 +20,25 @@ import javax.persistence.OneToMany;
  *
  * @author Alex
  */
+@Data
 @Entity
 public class Item {
-    
+
     @Column(name="ITEM_ID")
     @Id
     private long id;
     private String name;
-    
-    
+
+
     @OneToMany
     @JoinColumn (name="ITEM_ID")
     private List<Stat> bonusStats;
     private int itemClass; //Arrow, sword etc;
-    
-    
+
+
     public Item() {
     }
+
     
     
     public long getId() {

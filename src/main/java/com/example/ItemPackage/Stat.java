@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 
 
+
 /**
  *
  * @author Alex
@@ -18,14 +19,14 @@ import javax.persistence.Id;
 
 @Entity
 public class Stat{
-        
+
         @Id
         int statNumber;
         int amount;
 
 
     public Stat(){
-        
+
     }
 
     public Stat(int statNumber, int amount){
