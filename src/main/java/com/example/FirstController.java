@@ -10,7 +10,6 @@ import com.example.security.user.User;
 import com.example.security.user.UserRepository;
 import com.example.security.user.UserService;
 
-import com.example.ItemPackage.Item;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -30,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FirstController {
     
-    private Utilisateur user=null;
+    private TmpUser user=null;
     
     @Inject
     UserService service = new UserService();
@@ -39,9 +38,15 @@ public class FirstController {
     UserRepository userRepo;  
     
     @RequestMapping("/")
-    public String MaClasseController(Model m, Authentication auth){
+    public String index(Model m, Authentication auth){
         if(auth!=null)
-            m.addAttribute("user", auth.getName());
+            if(auth.isAuthenticated())
+            {
+                //System.out.println(((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername());
+                m.addAttribute("user", ((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername());
+            }
+            else
+                m.addAttribute("user", null);
         else
             m.addAttribute("user", null);
         return "index";
@@ -50,7 +55,6 @@ public class FirstController {
     @RequestMapping("/connexion")
     public String connexion(Model m, Authentication auth)
     {
-         m.addAttribute("user", auth.isAuthenticated());
          m.addAttribute("u", new User());
          return "connexion";
     }
@@ -58,23 +62,23 @@ public class FirstController {
     @RequestMapping("/inscription")
     public String inscription(Model m)
     {
-        m.addAttribute("u", new Utilisateur());
+        m.addAttribute("u", new TmpUser());
         return "inscription";
     }
     
-   @RequestMapping("/check")
-    public String checkUser(@Valid Utilisateur u){
-        
+    @RequestMapping("/saveUser")
+    public String saveUser(@Valid TmpUser u)
+    {
+        System.out.println(""+u.getPassword());
+        User uti = new User(u.getLogin());
+        service.saveUserComputingDerivedPassword(uti, u.getPassword());
         return "redirect:/";
     }
     
-    @RequestMapping("/persiUtilisateur")
-    public String persoUtilisateur(@Valid Utilisateur u)
+    @RequestMapping("/MYlogin")
+    public String myLogin(Model m)
     {
-        System.out.println(""+u.getMotDePasse());
-        User uti = new User(u.getLogin());
-        service.saveUserComputingDerivedPassword(uti, u.getMotDePasse());
         return "redirect:/";
     }
-        
+    
 }

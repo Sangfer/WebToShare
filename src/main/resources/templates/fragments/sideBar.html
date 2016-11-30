@@ -13,21 +13,11 @@
                 <li th:if="${user==null}">
                     <a href="inscription">Inscription</a>
                 </li>
-               <!--<li>
-                    <a href="#">Overview</a>
+                <li th:if="${user!=null}">
+                    <a href="Build">Build</a>
                 </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>-->
+                
+                
             </ul>
 
 </nav>

@@ -17,13 +17,13 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-public class Utilisateur {
+public class TmpUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
     private String login;
-    private String motDePasse;
+    private String password;
 
     public String getLogin() {
         return login;
@@ -33,12 +33,12 @@ public class Utilisateur {
         this.login = login;
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
