@@ -7,7 +7,6 @@ package com.example.ItemPackage;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import org.json.JSONObject;
 
 /**
  *
@@ -43,7 +42,6 @@ public class HttpURLConnection {
 			response.append(inputLine);
 		}
 		in.close();
-
                 return response.toString();
 
 	}

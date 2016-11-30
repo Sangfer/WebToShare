@@ -5,11 +5,15 @@
  */
 package com.example.ItemPackage;
 
+
+
 /**
  *
  * @author Alex
  */
+
 public class Stat{
+    
         int statNumber;
         int amount;
 
@@ -21,6 +25,14 @@ public class Stat{
     public Stat(int statNumber, int amount){
         this.statNumber=statNumber;
         this.amount=amount;
+    }
+
+    public int getStatNumber() {
+        return statNumber;
+    }
+
+    public void setStatNumber(int statNumber) {
+        this.statNumber = statNumber;
     }
     
     }

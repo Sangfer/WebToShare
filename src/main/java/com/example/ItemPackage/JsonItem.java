@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 public class JsonItem {
     
+    
     private JSONObject jsonItem;
     private List<Item> listItems= new ArrayList<Item>();
     
@@ -49,19 +50,44 @@ public class JsonItem {
     
     public void createItem(int item) throws Exception{
         this.getItem(item);
-        Item myItem= new Item(  getId(), getDescription(), getName(), getIcon(), 
+        /*Item myItem= new Item(  getId(), getDescription(), getName(), getIcon(), 
                                 getBonusStats(), getItemClass(), getDammageMin(),
                                 getDammageMax(),getExactMin(), getExactMax(), 
                                 getWeaponSpeed(), getDps(), getBaseArmor(),
-                                isHasSockets());   
+                                isHasSockets()); */ 
+         Item myItem= new Item(getId(), getName(),  getItemClass(), getBonusStats());
         listItems.add(myItem);
+    }
+    
+    
+    public void checkItem(){
+        for(int i=0; i<20; i++)
+            System.out.println("............");
+        for(Item it: listItems){
+            System.out.println("Showing Item have been created");
+            System.out.println(it.getId());
+            System.out.println(it.getName());
+                        System.out.println("............");
+            List<Stat> listStat=it.getBonusStats();
+            for(Stat t: listStat){
+                System.out.println("Stat number:"+t.statNumber);
+                                System.out.println("Stat amount"+t.amount);
+
+            }
+
+
+        
+    }
     }
     
     public void CreateItems(){
     List<String> itemsToCreate= ListUsefulItems.getList();
+    
     for(String s: itemsToCreate){
+        System.out.println(s);
        try{
            createItem(Integer.valueOf(s));
+           
        }
        catch (Exception E){
            System.out.println("com.example.ItemPackage.JsonItem.CreateItems(), impossible to create");
@@ -77,19 +103,16 @@ public class JsonItem {
         return jsonItem.getInt("id");
     }
      
-    public String getDescription() {
-        return jsonItem.getString("description");
-    }
+ 
  
     public String getName() {
+
         return jsonItem.getString("name");
     }
-       
-    public String getIcon() {
-        return jsonItem.getString("icon");
-    }
+
        
     public List<Stat> getBonusStats() {
+
         List<Stat> myList = new ArrayList<>();
         JSONArray tmp = jsonItem.getJSONArray("bonusStats"); 
         for(Object o: tmp){
@@ -103,39 +126,7 @@ public class JsonItem {
     }
        
     public int getItemClass() {
-        return jsonItem.getInt("ItemClass");
-    }
-        
-    public int getDammageMin() {
-        return jsonItem.getInt("min");
-    }
-    
-    public int getDammageMax() {
-        return jsonItem.getInt("max");
-    }
-    
-    public int getExactMin() {
-        return jsonItem.getInt("exactMin");
-    }
-      
-    public int getExactMax() {
-        return jsonItem.getInt("exactMax");
-    }
-      
-    public int getWeaponSpeed() {
-        return jsonItem.getInt("weaponSeed");
-    }
-      
-    public int getDps() {
-        return jsonItem.getInt("dps");
-    }
-    
-    public int getBaseArmor() {
-        return jsonItem.getInt("baseArmor");
-    }
-        
-    public boolean isHasSockets() {
-        return jsonItem.getBoolean("hasSockets");
+        return jsonItem.getInt("itemClass");
     }
 
 }
