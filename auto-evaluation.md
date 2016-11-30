@@ -15,8 +15,7 @@ lors du développement:
 
 Alexis Barthélémy:
 Environ 35h de travail personnel dont énormément de recherche. Je n'ai pas pas pu faire certains commit, Clément les à fait pour moi. 
-Elément dévelo=ppés: Tout le package Item, c'est à dire connection à l'API, récupération du Json, transformation du Json en object Java, création de la liste des Items associé, affichage depuis notre site des ItemJsons. Partie réact non fonctionnelle mais ce n'était originalement pas ma partie. Database Loader également crée.
-
+Elémentd développés: Tout le package Item, c'est à dire connection à l'API, récupération du Json, transformation du Json en object Java, création de la liste des Items associé, affichage depuis notre site des ItemJsons. Partie réact non fonctionnelle mais ce n'était originalement pas ma partie. Database Loader également crée.
 A propos de Git:
 Commit assez fréquent à la fin mais quelques bug avec mes fichiers et ceux de clément, il a donc fait certains merge pour moi.
 A propos du code!
