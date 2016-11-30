@@ -1,33 +1,33 @@
-
-var CompteurClickable = React.createClass({
-  render: function() {
-    return <div onClick={ this.props.siClick }>
-      Compteur {this.props.valeur}
-    </div>
-  }
-})
-
-var MonApp = React.createClass({
-  getInitialState: function() {
-    var etat = {};
-    etat.valeurCompteur = this.props.start;
-    return etat;
-  },
-  addOneToCounter: function() {
-    this.state.valeurCompteur += 1;
-    this.setState(this.state);
-  },
-  render: function() {
-    return <div>
-      <CompteurClickable siClick={this.addOneToCounter} valeur={this.state.valeurCompteur}></CompteurClickable>
-      <CompteurClickable siClick={this.addOneToCounter} valeur={this.state.valeurCompteur}></CompteurClickable>
-      <button onClick={ this.addOneToCounter }>+1</button>
-    </div>
-  }
-  // margin-height (CSS) -> marginHeight (JS et React)
-});
+var Table = Reactable.Table,
+    Thead = Reactable.Thead,
+    Th = Reactable.Th,
+    Tr = Reactable.Tr,
+    Td = Reactable.Td;
 
 ReactDOM.render(
-    <MonApp start={10}></MonApp>,
-    document.getElementById('container')
-  );
+    <Table className="table" id="table">
+        <Thead>
+          <Th column="name">
+            <strong className="name-header">First Name, Last Name</strong>
+          </Th>
+          <Th column="age">
+            <em className="age-header">Age, years</em>
+          </Th>
+        </Thead>
+        <Tr>
+            <Td column="name" data="Griffin Smith">
+                <b>Griffin Smith</b>
+            </Td>
+            <Td column="age">18</Td>
+        </Tr>
+        <Tr>
+            <Td column="name">Lee Salminen</Td>
+            <Td column="age">23</Td>
+        </Tr>
+        <Tr>
+            <Td column="position">Developer</Td>
+            <Td column="age">28</Td>
+        </Tr>
+    </Table>,
+    document.getElementById('table')
+);

@@ -6,25 +6,15 @@
 package com.example;
 
 
-import com.example.ItemPackage.Item;
-import com.example.ItemPackage.Stat;
 import com.example.security.user.User;
 import com.example.security.user.UserRepository;
 import com.example.security.user.UserService;
-import java.lang.annotation.Annotation;
-
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.validation.Valid;
-import org.hibernate.cfg.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author Clement
@@ -42,11 +32,7 @@ public class FirstController {
     UserRepository userRepo;  
     
     @RequestMapping("/")
-    public String index(Model m, Authentication auth){
-        Configuration config = new Configuration()
-   .configure("collections/list/ann/hibernate.cfg.xml")
-   .addAnnotatedClass(Item.class)
-   .addAnnotatedClass(Stat.class);
+    public String index(Model m, Authentication auth){    
         if(auth!=null)
             if(auth.isAuthenticated())
             {
